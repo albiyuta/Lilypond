@@ -1,0 +1,27 @@
+% Fuga.tex --- lyluatex で外部 .ly ファイルを埋め込む例
+% コンパイル: lualatex --shell-escape Fuga.tex
+\documentclass[a4paper,11pt]{ltjsarticle}
+
+\usepackage{luatexja}
+\usepackage[haranoaji]{luatexja-preset}
+\usepackage{geometry}
+\usepackage{lyluatex}  % LilyPond 埋め込み用（--shell-escape 必須）
+
+\geometry{margin=25mm}
+
+\title{FUGA a 4 voci}
+\author{}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+以下の譜例はJ.\,S.~バッハ「平均律クラヴィーア曲集 第1巻」ハ長調 (BWV~846) フーガ
+の第1提示部である．
+\#1，\#2...は声部1，声部2...を表す．
+
+% \lilypondfile でパスを指定するだけで LilyPond コードを取り込める
+\lilypondfile[staffsize=16, line-width=150mm]{BWV846_Fuga.ly}
+
+
+\end{document}
