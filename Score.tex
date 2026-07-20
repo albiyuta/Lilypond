@@ -1,0 +1,50 @@
+% Score.tex --- Example of embedding external .ly files with lyluatex
+% Compile: lualatex --shell-escape Score.tex
+\documentclass[a4paper,11pt]{ltjsarticle}
+
+\usepackage{luatexja}
+\usepackage[haranoaji]{luatexja-preset}
+\usepackage{geometry}
+\usepackage{lyluatex}  % For embedding LilyPond (requires --shell-escape)
+
+\geometry{margin=25mm}
+
+\title{Embedding LilyPond Scores in \LaTeX}
+\date{}
+
+\begin{document}
+\maketitle
+
+This document demonstrates that LilyPond scores can be typeset directly inside
+a \LaTeX{} document. The \texttt{lyluatex} package runs LilyPond on an external
+\texttt{.ly} file at compile time and inserts the resulting score into the text,
+so the score and the prose stay in a single source tree and no manual export of
+image files is needed.
+
+A score is included with a single command giving the path to the \texttt{.ly}
+file, with the staff size and line width set as options:
+
+\begin{quote}
+\texttt{\textbackslash lilypondfile[staffsize=16, line-width=150mm]\{Bach\_BWV846.ly\}}
+\end{quote}
+
+Compilation requires LuaLaTeX with shell escape enabled, since the package needs
+to invoke the \texttt{lilypond} executable:
+
+\begin{quote}
+\texttt{lualatex -{}-shell-escape Score.tex}
+\end{quote}
+
+The two examples below show that this works both for a short excerpt and for a
+longer, typographically demanding one.
+
+\section{Example 1: J.\,S.~Bach, Fugue in C major, BWV~846}
+
+% \lilypondfile imports the LilyPond code simply by giving its path
+\lilypondfile[staffsize=16, line-width=150mm]{Bach_BWV846.ly}
+
+\section{Example 2: Beethoven, Piano Sonata No.~29, Op.~106}
+
+\lilypondfile[staffsize=16, line-width=150mm]{Beethoven_op106.ly}
+
+\end{document}

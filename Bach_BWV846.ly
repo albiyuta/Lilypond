@@ -2,7 +2,7 @@
 
 \language "deutsch"
 
-% 音符を色付けするマクロ
+% Macro for coloring notes
 colorMusic =
 #(define-music-function (color mus) (color? ly:music?)
   #{
@@ -17,7 +17,7 @@ colorMusic =
     \revert Accidental.color
   #})
 
-% 譜例に色付きテキストを追加するマクロ，jpb=bottom, jpa=above
+% Macros for adding colored text to the example: jpb = below, jpa = above
 jpb =
 #(define-music-function (text color) (string? color?)
   #{
@@ -33,7 +33,7 @@ jpa =
     }
   #})
 
-% 色の定義
+% Color definitions
 red    = #(rgb-color 0.8 0.2 0.2)
 green  = #(rgb-color 0.2 0.6 0.2)
 blue   = #(rgb-color 0.2 0.3 0.85)
@@ -42,7 +42,7 @@ purple = #(rgb-color 0.6 0.3 0.7)
 cyan   = #(rgb-color 0.1 0.7 0.7)
 
 \paper {
-  % 楽器名にスペースを加える
+  % Add space for the instrument name
   indent = 18\mm
 }
 
@@ -54,17 +54,17 @@ global = {
 rightOne = \relative c'' {
   \global
   \accidentalStyle modern
-  R1 | r2 r8 \colorMusic #blue {g8 \jpa"答唱#2"#blue a h | 
-  c8. d32 c h8 e a, d ~ d16 e d c} | \colorMusic #purple {h16 \jpa"対唱#2"#purple g a h c h c d e d e fis g8 h,|
-  c8 a d16 c h a g8.} \colorMusic #cyan {g16 \jpa"自由旋律#2"#cyan f16 e f g | a16 g a h c2 h4} |
+  R1 | r2 r8 \colorMusic #blue {g8 \jpa"Answer #2"#blue a h |
+  c8. d32 c h8 e a, d ~ d16 e d c} | \colorMusic #purple {h16 \jpa"Countersubject #2"#purple g a h c h c d e d e fis g8 h,|
+  c8 a d16 c h a g8.} \colorMusic #cyan {g16 \jpa"Free counterpoint #2"#cyan f16 e f g | a16 g a h c2 h4} |
   
 }
 
 rightTwo = \relative c'' {
   \global
   \accidentalStyle modern
-  r8 \colorMusic #red { c,8 \jpb"主唱#1"#red d e f8. g32 f e8 a | d, g ~ g16 a g f} \colorMusic #purple {e \jpb"対唱#1"#purple f e d c d c h |
-  a8 fis' g4 ~ g8 fis16 e fis8 d | g8} \colorMusic #cyan {\jpb"自由旋律#1"#cyan f e d c r8 r8 g' ~ |
+  r8 \colorMusic #red { c,8 \jpb"Subject #1"#red d e f8. g32 f e8 a | d, g ~ g16 a g f} \colorMusic #purple {e \jpb"Countersubject #1"#purple f e d c d c h |
+  a8 fis' g4 ~ g8 fis16 e fis8 d | g8} \colorMusic #cyan {\jpb"Free counterpoint #1"#cyan f e d c r8 r8 g' ~ |
   g8 f16 e f4 ~ f16 f e8 d4 | c8 f r16 g16 f e f8 d g4 ~} |
   
 }
@@ -79,8 +79,8 @@ leftOne = \relative c' {
   \global
   \accidentalStyle modern
   R1 | R1 |
-  R1 | r8 \colorMusic #blue {g8 \jpa"答唱#3"#blue a h c8. d32 c h8 e |
-  a, d ~ d16 e d c} \colorMusic #purple {h8 \jpa"対唱#3"#purple c ~ c b | a8 d g, c r16 a16 h c d4} |
+  R1 | r8 \colorMusic #blue {g8 \jpa"Answer #3"#blue a h c8. d32 c h8 e |
+  a, d ~ d16 e d c} \colorMusic #purple {h8 \jpa"Countersubject #3"#purple c ~ c b | a8 d g, c r16 a16 h c d4} |
 }
 
 leftTwo = \relative c' {
@@ -88,7 +88,7 @@ leftTwo = \relative c' {
   \accidentalStyle modern
   R1 | R1 |
   R1 | R1 |
-  r2 r8 \colorMusic #red {c,8 \jpb"主唱#4"#red d e | f8. g32 f e8 a d, g ~ g16 a g f}
+  r2 r8 \colorMusic #red {c,8 \jpb"Subject #4"#red d e | f8. g32 f e8 a d, g ~ g16 a g f}
 }
 
 \score {
